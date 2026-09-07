@@ -1,2 +1,2 @@
 # HandyStarters
-Minecraft MOD : Alleviate early-game frustration.
+Minecraft MOD : Eliminate the frustration of the early game!
