@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "has_stick": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "minecraft:stick" }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [ "has_stick" ]
+  ],
+  "rewards": {
+    "recipes": [
+      "handy_starters:wood_pellet_from_sticks"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "S": "minecraft:stick",
+    "C": "minecraft:copper_ingot"
+  },
+  "pattern": [
+    "SCC",
+    "SCC",
+    "S  "
+  ],
+  "result": {
+    "id": "handy_starters:pole_saw",
+    "count": 1
+  }
+}
