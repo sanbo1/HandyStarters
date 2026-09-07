@@ -1,0 +1,38 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+#issueTrackerURL = ""
+license = "Insert License Here"
+
+[[mods]]
+modId = "handy_starters"
+version = "${version}"
+displayName = "Handy Starters"
+authors = "Me!"
+description = '''
+This is an example description! Tell everyone what your mod is about!
+'''
+#logoFile = ""
+
+[[dependencies.handy_starters]]
+modId = "neoforge"
+type = "required"
+versionRange = "[26.2.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.handy_starters]]
+modId = "minecraft"
+type = "required"
+versionRange = "[26.2,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.handy_starters]]
+modId = "architectury"
+type = "required"
+versionRange = "[21.0.7,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[mixins]]
+config = "handy_starters.mixins.json"

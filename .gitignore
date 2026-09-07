@@ -1,0 +1,41 @@
+# Gradle
+.gradle/
+build/
+out/
+classes/
+*.gradle-home/
+
+# Minecraft / MinecraftForge / Fabric / NeoForge
+run/
+runs/
+logs/
+crash-reports/
+saves/
+screenshots/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Java
+*.class
+hs_err_pid*
+
+# Misc
+*.log
+*.tmp

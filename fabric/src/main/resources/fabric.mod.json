@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "handy_starters",
+  "version": "${version}",
+  "name": "Handy Starters",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "Me!"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/handy_starters/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.snd.handystarters.fabric.ExampleModFabric"
+    ],
+    "client": [
+      "com.snd.handystarters.fabric.client.ExampleModFabricClient"
+    ]
+  },
+  "mixins": [
+    "handy_starters.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.2",
+    "java": ">=25",
+    "architectury": ">=21.0.7",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
