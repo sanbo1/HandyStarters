@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "W": "#minecraft:planks",
+    "C": "minecraft:chest"
+  },
+  "pattern": [
+    "W W",
+    "WCW"
+  ],
+  "result": {
+    "id": "handy_starters:wooden_extractor",
+    "count": 1
+  }
+}

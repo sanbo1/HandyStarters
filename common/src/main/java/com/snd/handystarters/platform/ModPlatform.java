@@ -7,6 +7,8 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 
 /**
  * Thin seam between the loader-agnostic common code and whatever each loader's
@@ -17,6 +19,10 @@ import net.minecraft.world.item.Item;
  */
 public interface ModPlatform {
     <T extends Item> Supplier<T> registerItem(String path, Supplier<T> factory);
+
+    <T extends Block> Supplier<T> registerBlock(String path, Supplier<T> factory);
+
+    <T extends BlockEntityType<?>> Supplier<T> registerBlockEntityType(String path, Supplier<T> factory);
 
     void addToCreativeTab(ResourceKey<CreativeModeTab> tab, Supplier<? extends Item> item);
 

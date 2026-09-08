@@ -11,6 +11,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
@@ -25,6 +27,20 @@ public final class FabricModPlatform implements ModPlatform {
         T item = factory.get();
         Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(ExampleMod.MOD_ID, path), item);
         return () -> item;
+    }
+
+    @Override
+    public <T extends Block> Supplier<T> registerBlock(String path, Supplier<T> factory) {
+        T block = factory.get();
+        Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(ExampleMod.MOD_ID, path), block);
+        return () -> block;
+    }
+
+    @Override
+    public <T extends BlockEntityType<?>> Supplier<T> registerBlockEntityType(String path, Supplier<T> factory) {
+        T type = factory.get();
+        Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, Identifier.fromNamespaceAndPath(ExampleMod.MOD_ID, path), type);
+        return () -> type;
     }
 
     @Override

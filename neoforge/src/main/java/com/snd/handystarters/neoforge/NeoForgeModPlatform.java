@@ -7,10 +7,13 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.NeoForge;
@@ -27,6 +30,9 @@ public final class NeoForgeModPlatform implements ModPlatform {
     }
 
     private final DeferredRegister.Items items = DeferredRegister.createItems(ExampleMod.MOD_ID);
+    private final DeferredRegister<Block> blocks = DeferredRegister.create(Registries.BLOCK, ExampleMod.MOD_ID);
+    private final DeferredRegister<BlockEntityType<?>> blockEntityTypes =
+            DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, ExampleMod.MOD_ID);
     private final Map<ResourceKey<CreativeModeTab>, List<Supplier<? extends Item>>> tabEntries = new HashMap<>();
     private final List<FuelEntry> fuelEntries = new ArrayList<>();
 
@@ -34,11 +40,23 @@ public final class NeoForgeModPlatform implements ModPlatform {
         modEventBus.addListener(this::onBuildCreativeModeTabContents);
         NeoForge.EVENT_BUS.addListener(this::onFurnaceFuelBurnTime);
         items.register(modEventBus);
+        blocks.register(modEventBus);
+        blockEntityTypes.register(modEventBus);
     }
 
     @Override
     public <T extends Item> Supplier<T> registerItem(String path, Supplier<T> factory) {
         return items.register(path, factory);
+    }
+
+    @Override
+    public <T extends Block> Supplier<T> registerBlock(String path, Supplier<T> factory) {
+        return blocks.register(path, factory);
+    }
+
+    @Override
+    public <T extends BlockEntityType<?>> Supplier<T> registerBlockEntityType(String path, Supplier<T> factory) {
+        return blockEntityTypes.register(path, factory);
     }
 
     @Override

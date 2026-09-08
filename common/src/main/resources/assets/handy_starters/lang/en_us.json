@@ -3,5 +3,11 @@
   "item.handy_starters.wood_pellet": "Wood Pellet",
   "item.handy_starters.coarse_fiber": "Coarse Fiber",
   "item.handy_starters.pole_saw": "Pole Saw",
+  "item.handy_starters.wooden_feeder": "Wooden Feeder",
+  "item.handy_starters.wooden_extractor": "Wooden Extractor",
+  "block.handy_starters.wooden_feeder": "Wooden Feeder",
+  "block.handy_starters.wooden_extractor": "Wooden Extractor",
+  "container.handy_starters.wooden_feeder": "Wooden Feeder",
+  "container.handy_starters.wooden_extractor": "Wooden Extractor",
   "tag.item.handy_starters.wooden_tools": "Wooden Tools"
 }
