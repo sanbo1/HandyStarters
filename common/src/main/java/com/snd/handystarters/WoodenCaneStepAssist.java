@@ -17,7 +17,13 @@ import com.snd.handystarters.registry.ModItems;
 public final class WoodenCaneStepAssist {
     private static final Identifier STEP_HEIGHT_MODIFIER_ID =
             Identifier.fromNamespaceAndPath(ExampleMod.MOD_ID, "wooden_cane_step_height");
-    private static final double STEP_HEIGHT_BONUS = 1.0;
+    // The step height attribute defaults to 0.6, so this lands the total on 1.4.
+    // No vanilla block has a collision height between 1.0 and 1.5, so 1.4 climbs
+    // exactly the same solid blocks 1.0 would, and additionally clears a block with
+    // something thin on top of it (carpet 1.0625, trapdoor 1.1875, snow layers).
+    // Fences, walls and fence gates are all 1.5 and stay out of reach, as does a
+    // block topped with a slab.
+    private static final double STEP_HEIGHT_BONUS = 0.8;
 
     public static void init(ModPlatform platform) {
         platform.onPlayerTick(WoodenCaneStepAssist::onPlayerTick);

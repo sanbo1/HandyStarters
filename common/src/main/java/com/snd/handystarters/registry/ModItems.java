@@ -28,6 +28,14 @@ public final class ModItems {
     // A furnace smelts one item per 200 ticks by default, so this burns exactly one item per pellet.
     private static final int WOOD_PELLET_BURN_TIME = 200;
 
+    // What vanilla gives every wooden tool (verified against FuelValues).
+    private static final int WOODEN_TOOL_BURN_TIME = 200;
+
+    // The cane fights like a wooden hoe: vanilla builds that one as
+    // HoeItem(ToolMaterial.WOOD, 0.0F, -3.0F), i.e. the displayed 1 damage / 1.0 speed.
+    private static final float WOODEN_CANE_ATTACK_DAMAGE = 1.0F;
+    private static final float WOODEN_CANE_ATTACK_SPEED = 1.0F;
+
     // Pole saw combat/utility stats. Attack speed isn't specified by the design, so it borrows
     // a stone axe's feel (displayed speed 0.8 => modifier of 0.8 - 4.0 base).
     private static final float POLE_SAW_ATTACK_DAMAGE = 3.0F;
@@ -53,7 +61,8 @@ public final class ModItems {
         WOODEN_CANE = platform.registerItem("wooden_cane",
                 () -> new Item(new Item.Properties()
                         .setId(itemKey("wooden_cane"))
-                        .stacksTo(1)));
+                        .stacksTo(1)
+                        .attributes(buildWoodenCaneAttributes())));
 
         WOOD_PELLET = platform.registerItem("wood_pellet",
                 () -> new Item(new Item.Properties()
@@ -78,6 +87,18 @@ public final class ModItems {
         platform.addToCreativeTab(INGREDIENTS_TAB, COARSE_FIBER);
 
         platform.registerFuel(WOOD_PELLET, WOOD_PELLET_BURN_TIME);
+        platform.registerFuel(WOODEN_CANE, WOODEN_TOOL_BURN_TIME);
+    }
+
+    private static ItemAttributeModifiers buildWoodenCaneAttributes() {
+        return ItemAttributeModifiers.builder()
+                .add(Attributes.ATTACK_DAMAGE,
+                        new AttributeModifier(Item.BASE_ATTACK_DAMAGE_ID, WOODEN_CANE_ATTACK_DAMAGE - 1.0, AttributeModifier.Operation.ADD_VALUE),
+                        EquipmentSlotGroup.MAINHAND)
+                .add(Attributes.ATTACK_SPEED,
+                        new AttributeModifier(Item.BASE_ATTACK_SPEED_ID, WOODEN_CANE_ATTACK_SPEED - 4.0, AttributeModifier.Operation.ADD_VALUE),
+                        EquipmentSlotGroup.MAINHAND)
+                .build();
     }
 
     private static Tool buildPoleSawTool() {
