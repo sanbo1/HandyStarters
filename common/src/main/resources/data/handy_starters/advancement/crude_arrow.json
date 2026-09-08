@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "has_coarse_fiber": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "handy_starters:coarse_fiber" }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [ "has_coarse_fiber" ]
+  ],
+  "rewards": {
+    "recipes": [
+      "handy_starters:crude_arrow"
+    ]
+  }
+}

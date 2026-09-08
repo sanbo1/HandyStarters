@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -12,6 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
@@ -51,6 +53,14 @@ public final class FabricModPlatform implements ModPlatform {
     @Override
     public void registerFuel(Supplier<? extends Item> item, int burnTicks) {
         FuelValueEvents.BUILD.register((builder, context) -> builder.add(item.get(), burnTicks));
+    }
+
+    @Override
+    public void registerDispenserProjectile(Supplier<? extends Item> item) {
+        // Items are registered eagerly on Fabric and vanilla has already run its
+        // bootstrap by the time a mod initialises, so this can be applied directly.
+        Item resolved = item.get();
+        DispenserBlock.registerBehavior(resolved, new ProjectileDispenseBehavior(resolved));
     }
 
     @Override

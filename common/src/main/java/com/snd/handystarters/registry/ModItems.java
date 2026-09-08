@@ -22,6 +22,7 @@ import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.level.block.Block;
 
 import com.snd.handystarters.ExampleMod;
+import com.snd.handystarters.item.CrudeArrowItem;
 import com.snd.handystarters.platform.ModPlatform;
 
 public final class ModItems {
@@ -54,11 +55,14 @@ public final class ModItems {
             ResourceKey.create(Registries.CREATIVE_MODE_TAB, Identifier.withDefaultNamespace("tools_and_utilities"));
     private static final ResourceKey<CreativeModeTab> INGREDIENTS_TAB =
             ResourceKey.create(Registries.CREATIVE_MODE_TAB, Identifier.withDefaultNamespace("ingredients"));
+    private static final ResourceKey<CreativeModeTab> COMBAT_TAB =
+            ResourceKey.create(Registries.CREATIVE_MODE_TAB, Identifier.withDefaultNamespace("combat"));
 
     public static Supplier<Item> WOODEN_CANE;
     public static Supplier<Item> WOOD_PELLET;
     public static Supplier<Item> COARSE_FIBER;
     public static Supplier<Item> POLE_SAW;
+    public static Supplier<Item> CRUDE_ARROW;
 
     public static void init(ModPlatform platform) {
         WOODEN_CANE = platform.registerItem("wooden_cane",
@@ -84,10 +88,17 @@ public final class ModItems {
                         .component(DataComponents.WEAPON, new Weapon(POLE_SAW_ATTACK_DURABILITY_COST, 0.0F))
                         .attributes(buildPoleSawAttributes())));
 
+        CRUDE_ARROW = platform.registerItem("crude_arrow",
+                () -> new CrudeArrowItem(new Item.Properties()
+                        .setId(itemKey("crude_arrow"))));
+
         platform.addToCreativeTab(TOOLS_AND_UTILITIES_TAB, WOODEN_CANE);
+        platform.addToCreativeTab(COMBAT_TAB, CRUDE_ARROW);
         platform.addToCreativeTab(TOOLS_AND_UTILITIES_TAB, POLE_SAW);
         platform.addToCreativeTab(INGREDIENTS_TAB, WOOD_PELLET);
         platform.addToCreativeTab(INGREDIENTS_TAB, COARSE_FIBER);
+
+        platform.registerDispenserProjectile(CRUDE_ARROW);
 
         platform.registerFuel(WOOD_PELLET, WOOD_PELLET_BURN_TIME);
         platform.registerFuel(WOODEN_CANE, WOODEN_TOOL_BURN_TIME);

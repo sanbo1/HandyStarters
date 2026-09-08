@@ -7,15 +7,18 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import net.minecraft.core.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
@@ -35,9 +38,11 @@ public final class NeoForgeModPlatform implements ModPlatform {
             DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, ExampleMod.MOD_ID);
     private final Map<ResourceKey<CreativeModeTab>, List<Supplier<? extends Item>>> tabEntries = new HashMap<>();
     private final List<FuelEntry> fuelEntries = new ArrayList<>();
+    private final List<Supplier<? extends Item>> dispenserProjectiles = new ArrayList<>();
 
     public NeoForgeModPlatform(IEventBus modEventBus) {
         modEventBus.addListener(this::onBuildCreativeModeTabContents);
+        modEventBus.addListener(this::onCommonSetup);
         NeoForge.EVENT_BUS.addListener(this::onFurnaceFuelBurnTime);
         items.register(modEventBus);
         blocks.register(modEventBus);
@@ -70,6 +75,11 @@ public final class NeoForgeModPlatform implements ModPlatform {
     }
 
     @Override
+    public void registerDispenserProjectile(Supplier<? extends Item> item) {
+        dispenserProjectiles.add(item);
+    }
+
+    @Override
     public void onPlayerTick(Consumer<Player> handler) {
         NeoForge.EVENT_BUS.addListener((PlayerTickEvent.Post event) -> handler.accept(event.getEntity()));
     }
@@ -81,6 +91,18 @@ public final class NeoForgeModPlatform implements ModPlatform {
                 event.accept(item.get());
             }
         }
+    }
+
+    private void onCommonSetup(FMLCommonSetupEvent event) {
+        // Deferred twice over: items aren't resolvable until registration has run,
+        // and DISPENSER_REGISTRY is a plain map that mod setup would otherwise be
+        // writing to from several threads at once.
+        event.enqueueWork(() -> {
+            for (Supplier<? extends Item> entry : dispenserProjectiles) {
+                Item item = entry.get();
+                DispenserBlock.registerBehavior(item, new ProjectileDispenseBehavior(item));
+            }
+        });
     }
 
     private void onFurnaceFuelBurnTime(FurnaceFuelBurnTimeEvent event) {

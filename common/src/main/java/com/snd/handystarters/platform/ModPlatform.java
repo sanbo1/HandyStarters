@@ -28,5 +28,13 @@ public interface ModPlatform {
 
     void registerFuel(Supplier<? extends Item> item, int burnTicks);
 
+    /**
+     * Makes a dispenser shoot the item instead of dropping it. Implementing
+     * {@code ProjectileItem} is not enough on its own: a dispenser looks the
+     * behaviour up in {@code DispenserBlock.DISPENSER_REGISTRY}, and the fallback
+     * for an unregistered item is to eject it as a dropped entity.
+     */
+    void registerDispenserProjectile(Supplier<? extends Item> item);
+
     void onPlayerTick(Consumer<Player> handler);
 }
