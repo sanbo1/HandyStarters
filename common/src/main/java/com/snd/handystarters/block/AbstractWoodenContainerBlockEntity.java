@@ -21,10 +21,30 @@ import net.minecraft.world.level.storage.ValueOutput;
 public abstract class AbstractWoodenContainerBlockEntity extends BaseContainerBlockEntity {
     public static final int CONTAINER_SIZE = 5;
 
+    /** One transfer per second, the rate both blocks are balanced around. */
+    protected static final int TRANSFER_COOLDOWN = 20;
+
+    // Same NBT key vanilla hoppers use, so the value reads naturally in NBT viewers.
+    private static final String COOLDOWN_TAG = "TransferCooldown";
+
     private NonNullList<ItemStack> items = NonNullList.withSize(CONTAINER_SIZE, ItemStack.EMPTY);
+    private int cooldown = TRANSFER_COOLDOWN;
 
     protected AbstractWoodenContainerBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
+    }
+
+    /**
+     * Counts down one tick and reports whether this is the tick a transfer may run on.
+     * The countdown keeps running even while the block is redstone-disabled, so pulsing
+     * it with a redstone clock can't push the transfer rate above one item per second.
+     */
+    protected boolean tickCooldown() {
+        if (--cooldown > 0) {
+            return false;
+        }
+        cooldown = TRANSFER_COOLDOWN;
+        return true;
     }
 
     @Override
@@ -47,12 +67,14 @@ public abstract class AbstractWoodenContainerBlockEntity extends BaseContainerBl
         super.loadAdditional(input);
         items = NonNullList.withSize(CONTAINER_SIZE, ItemStack.EMPTY);
         ContainerHelper.loadAllItems(input, items);
+        cooldown = input.getIntOr(COOLDOWN_TAG, TRANSFER_COOLDOWN);
     }
 
     @Override
     protected void saveAdditional(ValueOutput output) {
         super.saveAdditional(output);
         ContainerHelper.saveAllItems(output, items);
+        output.putInt(COOLDOWN_TAG, cooldown);
     }
 
     @Override

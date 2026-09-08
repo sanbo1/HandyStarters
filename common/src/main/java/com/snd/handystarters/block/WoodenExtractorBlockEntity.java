@@ -8,20 +8,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import com.snd.handystarters.registry.ModBlocks;
 
 public final class WoodenExtractorBlockEntity extends AbstractWoodenContainerBlockEntity {
-    // ~1 item/sec, matching the design's transfer rate (a vanilla hopper's default is 8 ticks).
-    private static final int TRANSFER_COOLDOWN = 20;
-
-    private int cooldown = TRANSFER_COOLDOWN;
-
     public WoodenExtractorBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlocks.WOODEN_EXTRACTOR_ENTITY.get(), pos, state);
     }
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, WoodenExtractorBlockEntity extractor) {
-        if (--extractor.cooldown > 0) {
+        if (!extractor.tickCooldown() || !state.getValue(WoodenExtractorBlock.ENABLED)) {
             return;
         }
-        extractor.cooldown = TRANSFER_COOLDOWN;
         ContainerTransfer.pullOneItemFromAbove(level, extractor, pos);
     }
 

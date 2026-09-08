@@ -68,7 +68,12 @@ final class ContainerTransfer {
             ItemStack moving = from.removeItem(i, 1);
             ItemStack leftover = HopperBlockEntity.addItem(from, destination, moving, insertDirection);
             if (leftover.isEmpty()) {
+                // Both sides, because addItem only calls setItem() when the target slot was
+                // empty: merging into an existing stack mutates it in place, so without this
+                // the receiving chunk is never flagged for saving and the item is lost on
+                // reload. Vanilla's ejectItems marks the destination here for the same reason.
                 from.setChanged();
+                destination.setChanged();
                 return true;
             }
             from.setItem(i, original);
@@ -102,6 +107,7 @@ final class ContainerTransfer {
             ItemStack leftover = HopperBlockEntity.addItem(source, into, moving, null);
             if (leftover.isEmpty()) {
                 source.setChanged();
+                into.setChanged();
                 return true;
             }
             source.setItem(slot, original);
