@@ -48,6 +48,13 @@ javap -p -c -classpath <jar> net.minecraft.world.level.block.HopperBlock
   イベントやコールバックまで解決を遅らせる。
 - Fabric側で、共通の初期化経路からクライアント専用クラスを**参照するだけでも**
   専用サーバーが落ちる（クラスロード時に `net.minecraft.client.Minecraft` に触れるため）。
+- **インターフェースを実装しただけでは機能せず、別途レジストリ登録が要る**ものがある。
+  実例：`ProjectileItem` を実装してもディスペンサーは発射してくれない。挙動は
+  `DispenserBlock.DISPENSER_REGISTRY` から引かれ、未登録アイテムのフォールバックは
+  装備品・硫黄キューブ・スポーンエッグしか見ないため、それ以外はアイテムとして
+  排出されるだけになる。`DispenserBlock.registerBehavior()` での登録が必要。
+  新しい要素を追加するときは「実装した型が実際にどこから参照されるか」を
+  バイトコードで追い、レジストリ経由なら登録処理も忘れないこと。
 
 ## モジュール構成
 
