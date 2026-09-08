@@ -1,20 +1,20 @@
 {
   "criteria": {
-    "has_bow": {
+    "has_material": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
-          { "items": "minecraft:bow" }
+          { "items": "#handy_starters:wood_pellet_pair" }
         ]
       }
     }
   },
   "requirements": [
-    [ "has_bow" ]
+    [ "has_material" ]
   ],
   "rewards": {
     "recipes": [
-      "handy_starters:wood_pellet_from_bow"
+      "handy_starters:wood_pellet_from_pair"
     ]
   }
 }

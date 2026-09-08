@@ -2,7 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "minecraft:bow"
+    "#handy_starters:wood_pellet_pair",
+    "#handy_starters:wood_pellet_pair"
   ],
   "result": {
     "id": "handy_starters:wood_pellet",

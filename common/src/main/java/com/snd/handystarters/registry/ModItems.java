@@ -31,6 +31,9 @@ public final class ModItems {
     // What vanilla gives every wooden tool (verified against FuelValues).
     private static final int WOODEN_TOOL_BURN_TIME = 200;
 
+    // Matches vanilla sticks and saplings, which both burn for half a wooden tool.
+    private static final int COARSE_FIBER_BURN_TIME = 100;
+
     // The cane fights like a wooden hoe: vanilla builds that one as
     // HoeItem(ToolMaterial.WOOD, 0.0F, -3.0F), i.e. the displayed 1 damage / 1.0 speed.
     private static final float WOODEN_CANE_ATTACK_DAMAGE = 1.0F;
@@ -88,6 +91,7 @@ public final class ModItems {
 
         platform.registerFuel(WOOD_PELLET, WOOD_PELLET_BURN_TIME);
         platform.registerFuel(WOODEN_CANE, WOODEN_TOOL_BURN_TIME);
+        platform.registerFuel(COARSE_FIBER, COARSE_FIBER_BURN_TIME);
     }
 
     private static ItemAttributeModifiers buildWoodenCaneAttributes() {
