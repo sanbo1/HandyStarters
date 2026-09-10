@@ -18,8 +18,10 @@ you're done with it.)
 
 ### 🪚 Pole Saw
 An axe/hoe hybrid on a long handle: mines any axe- or hoe-harvestable block at
-stone-tool speed, and its extended reach lets you chop and till from a step
-back. Crafted from 3 sticks and 4 copper ingots.
+stone-tool speed, and its extended reach lets you chop from a step back (it
+won't till farmland — that needs an actual hoe). Great for felling tall trees
+without having to climb them log by log. Crafted from 3 sticks and 4 copper
+ingots.
 
 ### 🌾 Coarse Fiber
 A humble crafting material that drops from short grass, tall grass, seagrass
@@ -40,13 +42,9 @@ combat that doesn't eat into your good arrow stock. Works from bows and
 dispensers alike.
 
 ### 📦 Wooden Feeder / Wooden Extractor
-Budget hoppers built from planks and a chest — a cheaper, earlier-game
-alternative to iron. The Feeder only **pushes** items out, in the direction
-it's facing, into whatever container is there; the Extractor only **pulls**
-items in, from the container directly above it. Neither will chain into the
-other or into itself, so they're built for simple, single-hop transfers, not
-multi-block pipelines. Comparator output, redstone lockout, and
-structure-safe rotation are all included.
+A cheaper, earlier-game alternative to the iron hopper. The Feeder only
+**pushes** items out; the Extractor only **pulls** items in. Each one moves
+items a single hop, so they don't chain together for more complex setups.
 
 ## Requirements
 
