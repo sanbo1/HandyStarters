@@ -69,8 +69,8 @@ javap -p -c -classpath <jar> net.minecraft.world.level.block.HopperBlock
 ローダー固有のAPIが必要になったら `ModPlatform` にメソッドを足して両方で実装する。
 common から特定ローダーのクラスを直接参照しないこと。
 
-エントリポイントは `ExampleMod.init(ModPlatform)`（common）、`ExampleModFabric`、
-`ExampleModNeoForge`。
+エントリポイントは `HandyStarters.init(ModPlatform)`（common）、`HandyStartersFabric`、
+`HandyStartersNeoForge`。
 
 ## ビルドと動作確認
 

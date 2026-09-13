@@ -4,7 +4,7 @@ import com.snd.handystarters.platform.ModPlatform;
 import com.snd.handystarters.registry.ModBlocks;
 import com.snd.handystarters.registry.ModItems;
 
-public final class ExampleMod {
+public final class HandyStarters {
     public static final String MOD_ID = "handy_starters";
 
     public static void init(ModPlatform platform) {

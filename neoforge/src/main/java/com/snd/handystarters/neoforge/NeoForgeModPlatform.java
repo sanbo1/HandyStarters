@@ -25,17 +25,17 @@ import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import com.snd.handystarters.ExampleMod;
+import com.snd.handystarters.HandyStarters;
 import com.snd.handystarters.platform.ModPlatform;
 
 public final class NeoForgeModPlatform implements ModPlatform {
     private record FuelEntry(Supplier<? extends Item> item, int burnTicks) {
     }
 
-    private final DeferredRegister.Items items = DeferredRegister.createItems(ExampleMod.MOD_ID);
-    private final DeferredRegister<Block> blocks = DeferredRegister.create(Registries.BLOCK, ExampleMod.MOD_ID);
+    private final DeferredRegister.Items items = DeferredRegister.createItems(HandyStarters.MOD_ID);
+    private final DeferredRegister<Block> blocks = DeferredRegister.create(Registries.BLOCK, HandyStarters.MOD_ID);
     private final DeferredRegister<BlockEntityType<?>> blockEntityTypes =
-            DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, ExampleMod.MOD_ID);
+            DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, HandyStarters.MOD_ID);
     private final Map<ResourceKey<CreativeModeTab>, List<Supplier<? extends Item>>> tabEntries = new HashMap<>();
     private final List<FuelEntry> fuelEntries = new ArrayList<>();
     private final List<Supplier<? extends Item>> dispenserProjectiles = new ArrayList<>();

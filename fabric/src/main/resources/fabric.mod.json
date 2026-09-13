@@ -16,10 +16,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.snd.handystarters.fabric.ExampleModFabric"
+      "com.snd.handystarters.fabric.HandyStartersFabric"
     ],
     "client": [
-      "com.snd.handystarters.fabric.client.ExampleModFabricClient"
+      "com.snd.handystarters.fabric.client.HandyStartersFabricClient"
     ]
   },
   "depends": {

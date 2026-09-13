@@ -5,14 +5,14 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.LootTableLoadEvent;
 
-import com.snd.handystarters.ExampleMod;
+import com.snd.handystarters.HandyStarters;
 import com.snd.handystarters.loot.ModCoarseFiberLoot;
 
-@Mod(ExampleMod.MOD_ID)
-public final class ExampleModNeoForge {
-    public ExampleModNeoForge(IEventBus modEventBus) {
+@Mod(HandyStarters.MOD_ID)
+public final class HandyStartersNeoForge {
+    public HandyStartersNeoForge(IEventBus modEventBus) {
         // Run our common setup.
-        ExampleMod.init(new NeoForgeModPlatform(modEventBus));
+        HandyStarters.init(new NeoForgeModPlatform(modEventBus));
 
         NeoForge.EVENT_BUS.addListener(this::onLootTableLoad);
     }

@@ -20,28 +20,28 @@ import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.registry.FuelValueEvents;
 
-import com.snd.handystarters.ExampleMod;
+import com.snd.handystarters.HandyStarters;
 import com.snd.handystarters.platform.ModPlatform;
 
 public final class FabricModPlatform implements ModPlatform {
     @Override
     public <T extends Item> Supplier<T> registerItem(String path, Supplier<T> factory) {
         T item = factory.get();
-        Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(ExampleMod.MOD_ID, path), item);
+        Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(HandyStarters.MOD_ID, path), item);
         return () -> item;
     }
 
     @Override
     public <T extends Block> Supplier<T> registerBlock(String path, Supplier<T> factory) {
         T block = factory.get();
-        Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(ExampleMod.MOD_ID, path), block);
+        Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(HandyStarters.MOD_ID, path), block);
         return () -> block;
     }
 
     @Override
     public <T extends BlockEntityType<?>> Supplier<T> registerBlockEntityType(String path, Supplier<T> factory) {
         T type = factory.get();
-        Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, Identifier.fromNamespaceAndPath(ExampleMod.MOD_ID, path), type);
+        Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, Identifier.fromNamespaceAndPath(HandyStarters.MOD_ID, path), type);
         return () -> type;
     }
 

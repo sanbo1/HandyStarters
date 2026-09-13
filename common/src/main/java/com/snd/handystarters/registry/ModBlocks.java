@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
-import com.snd.handystarters.ExampleMod;
+import com.snd.handystarters.HandyStarters;
 import com.snd.handystarters.block.WoodenExtractorBlock;
 import com.snd.handystarters.block.WoodenExtractorBlockEntity;
 import com.snd.handystarters.block.WoodenFeederBlock;
@@ -61,11 +61,11 @@ public final class ModBlocks {
     }
 
     private static ResourceKey<Block> blockKey(String path) {
-        return ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(ExampleMod.MOD_ID, path));
+        return ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(HandyStarters.MOD_ID, path));
     }
 
     private static ResourceKey<Item> itemKey(String path) {
-        return ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(ExampleMod.MOD_ID, path));
+        return ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(HandyStarters.MOD_ID, path));
     }
 
     private ModBlocks() {

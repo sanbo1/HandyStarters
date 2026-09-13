@@ -21,7 +21,7 @@ import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.level.block.Block;
 
-import com.snd.handystarters.ExampleMod;
+import com.snd.handystarters.HandyStarters;
 import com.snd.handystarters.item.CrudeArrowItem;
 import com.snd.handystarters.platform.ModPlatform;
 
@@ -147,7 +147,7 @@ public final class ModItems {
     }
 
     private static Identifier itemId(String path) {
-        return Identifier.fromNamespaceAndPath(ExampleMod.MOD_ID, path);
+        return Identifier.fromNamespaceAndPath(HandyStarters.MOD_ID, path);
     }
 
     private ModItems() {

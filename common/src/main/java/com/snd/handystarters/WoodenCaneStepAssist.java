@@ -16,7 +16,7 @@ import com.snd.handystarters.registry.ModItems;
  */
 public final class WoodenCaneStepAssist {
     private static final Identifier STEP_HEIGHT_MODIFIER_ID =
-            Identifier.fromNamespaceAndPath(ExampleMod.MOD_ID, "wooden_cane_step_height");
+            Identifier.fromNamespaceAndPath(HandyStarters.MOD_ID, "wooden_cane_step_height");
     // The step height attribute defaults to 0.6, so this lands the total on 1.4.
     // No vanilla block has a collision height between 1.0 and 1.5, so 1.4 climbs
     // exactly the same solid blocks 1.0 would, and additionally clears a block with

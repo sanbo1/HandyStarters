@@ -4,10 +4,10 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.loot.v3.FabricLootTableBuilder;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 
-import com.snd.handystarters.ExampleMod;
+import com.snd.handystarters.HandyStarters;
 import com.snd.handystarters.loot.ModCoarseFiberLoot;
 
-public final class ExampleModFabric implements ModInitializer {
+public final class HandyStartersFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
@@ -15,7 +15,7 @@ public final class ExampleModFabric implements ModInitializer {
         // Proceed with mild caution.
 
         // Run our common setup.
-        ExampleMod.init(new FabricModPlatform());
+        HandyStarters.init(new FabricModPlatform());
 
         LootTableEvents.MODIFY.register((key, tableBuilder, source, registries) -> {
             if (ModCoarseFiberLoot.isCoarseFiberLootTable(key)) {
