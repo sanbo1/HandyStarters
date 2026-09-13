@@ -7,7 +7,9 @@ that smooth out the most annoying parts of a fresh Minecraft world — no
 config, no bloat, just quality-of-life.
 
 Works on **both Fabric and NeoForge**, and installs equally well in
-singleplayer or on a dedicated server.
+singleplayer or on a dedicated server. It only adds new content — no vanilla
+mechanic is changed — so it's safe to drop into a world or server you're
+already playing on. Available in English and Japanese out of the box.
 
 ## Features
 
@@ -69,4 +71,5 @@ Source code and issue tracker: <https://github.com/sanbo1/HandyStarters>
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) — feel free to include Handy Starters in a modpack. No
+permission request needed, and credit is welcome but optional.
