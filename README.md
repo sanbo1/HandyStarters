@@ -2,6 +2,8 @@
 
 **Eliminate the frustration of the early game!**
 
+🇬🇧 English / 🇯🇵 日本語表示対応
+
 Handy Starters adds a small handful of cheap, early-accessible items and blocks
 that smooth out the most annoying parts of a fresh Minecraft world — no
 config, no bloat, just quality-of-life.
@@ -9,7 +11,7 @@ config, no bloat, just quality-of-life.
 Works on **both Fabric and NeoForge**, and installs equally well in
 singleplayer or on a dedicated server. It only adds new content — no vanilla
 mechanic is changed — so it's safe to drop into a world or server you're
-already playing on. Available in English and Japanese out of the box.
+already playing on.
 
 ## Features
 
