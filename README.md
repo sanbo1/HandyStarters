@@ -36,7 +36,8 @@ it into wood pellets.
 ### 🔥 Wood Pellet
 A compact furnace fuel made by recycling worn-out wooden gear — sticks,
 saplings, coarse fiber, or a full set of wooden tools, a bow, or a fishing
-rod — so nothing wooden has to go to waste.
+rod — so nothing wooden has to go to waste. One pellet burns for exactly
+one furnace smelt.
 
 ### 🏹 Crude Arrow
 A cheap, rough alternative to the standard arrow: cobblestone, a stick and
@@ -50,20 +51,9 @@ A cheaper, earlier-game alternative to the iron hopper. The Feeder only
 **pushes** items out; the Extractor only **pulls** items in. Each one moves
 items a single hop, so they don't chain together for more complex setups.
 
-## Requirements
-
-| | |
-|---|---|
-| Minecraft | 26.2 (any build in the 26.2 line) |
-| NeoForge | 26.2.0.1-beta or newer |
-| Fabric Loader | 0.16.8 or newer, plus Fabric API |
-| Java | 25+ |
-
-No mods beyond what's listed above are required.
-
 ## Installation
 
-1. Install [Fabric Loader](https://fabricmc.net/) or [NeoForge](https://neoforged.net/) for Minecraft 26.2.
+1. Install [Fabric Loader](https://fabricmc.net/) or [NeoForge](https://neoforged.net/) matching the Minecraft version of the file you download.
 2. If using Fabric, install Fabric API as well.
 3. Drop the Handy Starters jar for your loader into your `mods` folder.
 
