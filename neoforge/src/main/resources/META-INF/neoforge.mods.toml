@@ -1,21 +1,24 @@
 modLoader = "javafml"
 loaderVersion = "[1,)"
-#issueTrackerURL = ""
-license = "Insert License Here"
+issueTrackerURL = "https://github.com/sanbo1/HandyStarters/issues"
+license = "MIT"
 
 [[mods]]
 modId = "handy_starters"
 version = "${version}"
 displayName = "Handy Starters"
-authors = "Me!"
+authors = "sanbo1"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+Eliminate the frustration of the early game!
 '''
-#logoFile = ""
+logoFile = "assets/handy_starters/icon.png"
 
 [[dependencies.handy_starters]]
 modId = "neoforge"
 type = "required"
+# Any NeoForge for the 26.2 line. This range admits 26.2.0.1-beta and up
+# (verified to load and run against 26.2.0.1-beta); it excludes only the very
+# first build, 26.2.0.0-beta. The mod uses only NeoForge APIs that predate 26.2.
 versionRange = "[26.2.0,)"
 ordering = "NONE"
 side = "BOTH"
@@ -23,6 +26,7 @@ side = "BOTH"
 [[dependencies.handy_starters]]
 modId = "minecraft"
 type = "required"
-versionRange = "[26.2,)"
+# This build targets the 26.2 line only (matches the Fabric side's "~26.2").
+versionRange = "[26.2,26.3)"
 ordering = "NONE"
 side = "BOTH"

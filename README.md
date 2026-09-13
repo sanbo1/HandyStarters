@@ -50,9 +50,9 @@ items a single hop, so they don't chain together for more complex setups.
 
 | | |
 |---|---|
-| Minecraft | 26.2 |
-| Loaders | Fabric (0.19.5+) or NeoForge (26.2.0.52-beta+) |
-| Fabric only | requires Fabric API |
+| Minecraft | 26.2 (any build in the 26.2 line) |
+| NeoForge | 26.2.0.1-beta or newer |
+| Fabric Loader | 0.16.8 or newer, plus Fabric API |
 | Java | 25+ |
 
 No mods beyond what's listed above are required.

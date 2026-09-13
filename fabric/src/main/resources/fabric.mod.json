@@ -3,15 +3,15 @@
   "id": "handy_starters",
   "version": "${version}",
   "name": "Handy Starters",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Eliminate the frustration of the early game!",
   "authors": [
-    "Me!"
+    "sanbo1"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "issues": "https://github.com/sanbo1/HandyStarters/issues",
+    "sources": "https://github.com/sanbo1/HandyStarters"
   },
-  "license": "CC0-1.0",
+  "license": "MIT",
   "icon": "assets/handy_starters/icon.png",
   "environment": "*",
   "entrypoints": {
@@ -23,12 +23,9 @@
     ]
   },
   "depends": {
-    "fabricloader": ">=0.19.5",
+    "fabricloader": ">=0.16.8",
     "minecraft": "~26.2",
     "java": ">=25",
     "fabric-api": "*"
-  },
-  "suggests": {
-    "another-mod": "*"
   }
 }
