@@ -4,6 +4,8 @@
 
 🇬🇧 English / 🇯🇵 日本語表示対応
 
+📥 [CurseForge](https://www.curseforge.com/minecraft/mc-mods/handy-starters) · [Modrinth](https://modrinth.com/mod/handy-starters)
+
 Handy Starters adds a small handful of cheap, early-accessible items and blocks
 that smooth out the most annoying parts of a fresh Minecraft world — no
 config, no bloat, just quality-of-life.
@@ -55,7 +57,7 @@ items a single hop, so they don't chain together for more complex setups.
 
 1. Install [Fabric Loader](https://fabricmc.net/) or [NeoForge](https://neoforged.net/) matching the Minecraft version of the file you download.
 2. If using Fabric, install Fabric API as well.
-3. Drop the Handy Starters jar for your loader into your `mods` folder.
+3. Download the jar for your loader from [CurseForge](https://www.curseforge.com/minecraft/mc-mods/handy-starters) or [Modrinth](https://modrinth.com/mod/handy-starters) and drop it into your `mods` folder.
 
 ## Source & Issues
 
