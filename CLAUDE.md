@@ -38,5 +38,15 @@ MOD ID は `handy_starters`、パッケージは `com.snd.handystarters` で 26.
 
 他バージョンでも同じとは限らないため、ここに留める。
 
-- （まだ無い。確認できたものを追記する）
+- Fabric API（0.141.6+1.21.11）はまだ26.1以降の改名前。`CreativeModeTabEvents` ではなく
+  `net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents`（`modifyEntriesEvent(tab).register(entries -> entries.accept(...))`）、
+  `FuelValueEvents` ではなく `net.fabricmc.fabric.api.registry.FuelRegistryEvents`（シグネチャ自体は同じ）を使う。
+- `ItemPredicate` は `net.minecraft.advancements.criterion.ItemPredicate`（26.2の`advancements.predicates`パッケージ再編はまだ来ていない）。
+- データコンポーネント `Weapon` のコンストラクタは `Weapon(int)` の1引数のみ（26.2にある `Weapon(int, float)` は無い）。
+  ブロッキング無効化秒数を渡さない用途なら1引数版で置き換えられる。
+- `BlockEntityType` のコンストラクタ・`BlockEntitySupplier` インターフェースはpackage-private（26.2で公開化）。
+  common側で直接 `new BlockEntityType<>(...)` は書けない。Fabricは `FabricBlockEntityTypeBuilder.create(factory, blocks...).build()`、
+  NeoForgeは自身のAccess Transformerで公開されたコンストラクタを使う。**対象ブロックはSupplierのまま渡し、
+  NeoForge側では登録イベント発火時まで解決を遅らせること**（`DeferredRegister`は遅延登録前提のため、呼び出し時点で
+  `Supplier<Block>#get()` すると "Trying to access unbound value" のNPEになる）。
 - 26.2 版で踏んだ罠は `../26.2/CLAUDE.md` にある。1.21.11 でも同じかはバイトコードで確認してから適用する。

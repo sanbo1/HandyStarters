@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "has_copper_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": "minecraft:copper_ingot" }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [ "has_copper_ingot" ]
+  ],
+  "rewards": {
+    "recipes": [
+      "handy_starters:pole_saw"
+    ]
+  }
+}
