@@ -22,10 +22,13 @@
       "com.snd.handystarters.fabric.client.HandyStartersFabricClient"
     ]
   },
+  "mixins": [
+    "handy_starters.mixins.json"
+  ],
   "depends": {
-    "fabricloader": ">=0.16.8",
-    "minecraft": "~26.2",
-    "java": ">=25",
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
     "fabric-api": "*"
   }
 }

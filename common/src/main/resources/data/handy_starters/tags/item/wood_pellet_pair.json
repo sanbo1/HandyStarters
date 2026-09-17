@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "minecraft:stick",
-    "#minecraft:saplings",
-    "handy_starters:coarse_fiber"
-  ]
-}
