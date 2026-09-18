@@ -23,7 +23,9 @@ side = "BOTH"
 [[dependencies.handy_starters]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.11,)"
+# 1.21.11 is the last version in this numbering scheme; the next version is
+# 26.1, so this upper bound doesn't need updating as 1.21.x patches appear.
+versionRange = "[1.21.11,1.21.12)"
 ordering = "NONE"
 side = "BOTH"
 
