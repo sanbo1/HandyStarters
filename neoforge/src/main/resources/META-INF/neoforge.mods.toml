@@ -16,10 +16,12 @@ logoFile = "assets/handy_starters/icon.png"
 [[dependencies.handy_starters]]
 modId = "neoforge"
 type = "required"
-# Any NeoForge for the 26.2 line. This range admits 26.2.0.1-beta and up
-# (verified to load and run against 26.2.0.1-beta); it excludes only the very
-# first build, 26.2.0.0-beta. The mod uses only NeoForge APIs that predate 26.2.
-versionRange = "[26.2.0,)"
+# Any NeoForge for the 26.2 line only. Admits 26.2.0.1-beta and up (verified to
+# load and run against 26.2.0.1-beta), excludes only the very first build
+# (26.2.0.0-beta) and anything built for a later MC line (e.g. 26.3.x), which
+# this mod has never been built or tested against. The mod uses only NeoForge
+# APIs that predate 26.2.
+versionRange = "[26.2,26.3)"
 ordering = "NONE"
 side = "BOTH"
 
