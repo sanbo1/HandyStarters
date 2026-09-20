@@ -18,7 +18,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.fabricmc.fabric.api.registry.FuelValueEvents;
 
 import com.snd.handystarters.HandyStarters;
 import com.snd.handystarters.platform.ModPlatform;
@@ -48,11 +47,6 @@ public final class FabricModPlatform implements ModPlatform {
     @Override
     public void addToCreativeTab(ResourceKey<CreativeModeTab> tab, Supplier<? extends Item> item) {
         CreativeModeTabEvents.modifyOutputEvent(tab).register(output -> output.accept(item.get()));
-    }
-
-    @Override
-    public void registerFuel(Supplier<? extends Item> item, int burnTicks) {
-        FuelValueEvents.BUILD.register((builder, context) -> builder.add(item.get(), burnTicks));
     }
 
     @Override

@@ -21,7 +21,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -29,21 +28,16 @@ import com.snd.handystarters.HandyStarters;
 import com.snd.handystarters.platform.ModPlatform;
 
 public final class NeoForgeModPlatform implements ModPlatform {
-    private record FuelEntry(Supplier<? extends Item> item, int burnTicks) {
-    }
-
     private final DeferredRegister.Items items = DeferredRegister.createItems(HandyStarters.MOD_ID);
     private final DeferredRegister<Block> blocks = DeferredRegister.create(Registries.BLOCK, HandyStarters.MOD_ID);
     private final DeferredRegister<BlockEntityType<?>> blockEntityTypes =
             DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, HandyStarters.MOD_ID);
     private final Map<ResourceKey<CreativeModeTab>, List<Supplier<? extends Item>>> tabEntries = new HashMap<>();
-    private final List<FuelEntry> fuelEntries = new ArrayList<>();
     private final List<Supplier<? extends Item>> dispenserProjectiles = new ArrayList<>();
 
     public NeoForgeModPlatform(IEventBus modEventBus) {
         modEventBus.addListener(this::onBuildCreativeModeTabContents);
         modEventBus.addListener(this::onCommonSetup);
-        NeoForge.EVENT_BUS.addListener(this::onFurnaceFuelBurnTime);
         items.register(modEventBus);
         blocks.register(modEventBus);
         blockEntityTypes.register(modEventBus);
@@ -67,11 +61,6 @@ public final class NeoForgeModPlatform implements ModPlatform {
     @Override
     public void addToCreativeTab(ResourceKey<CreativeModeTab> tab, Supplier<? extends Item> item) {
         tabEntries.computeIfAbsent(tab, key -> new ArrayList<>()).add(item);
-    }
-
-    @Override
-    public void registerFuel(Supplier<? extends Item> item, int burnTicks) {
-        fuelEntries.add(new FuelEntry(item, burnTicks));
     }
 
     @Override
@@ -103,14 +92,5 @@ public final class NeoForgeModPlatform implements ModPlatform {
                 DispenserBlock.registerBehavior(item, new ProjectileDispenseBehavior(item));
             }
         });
-    }
-
-    private void onFurnaceFuelBurnTime(FurnaceFuelBurnTimeEvent event) {
-        for (FuelEntry entry : fuelEntries) {
-            if (event.getItemStack().getItem() == entry.item().get()) {
-                event.setBurnTime(entry.burnTicks());
-                return;
-            }
-        }
     }
 }

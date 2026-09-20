@@ -1,7 +1,5 @@
 package com.snd.handystarters.block;
 
-import com.mojang.serialization.MapCodec;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -37,7 +35,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
  * Never transfers into another feeder or extractor (see {@link ContainerTransfer}).
  */
 public final class WoodenFeederBlock extends BaseEntityBlock {
-    public static final MapCodec<WoodenFeederBlock> CODEC = simpleCodec(WoodenFeederBlock::new);
     public static final EnumProperty<Direction> FACING = HopperBlock.FACING;
     public static final BooleanProperty ENABLED = HopperBlock.ENABLED;
 
@@ -54,11 +51,6 @@ public final class WoodenFeederBlock extends BaseEntityBlock {
         registerDefaultState(stateDefinition.any()
                 .setValue(FACING, Direction.DOWN)
                 .setValue(ENABLED, Boolean.TRUE));
-    }
-
-    @Override
-    public MapCodec<WoodenFeederBlock> codec() {
-        return CODEC;
     }
 
     @Override

@@ -20,23 +20,33 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import com.snd.handystarters.HandyStarters;
 import com.snd.handystarters.item.CrudeArrowItem;
 import com.snd.handystarters.platform.ModPlatform;
 
 public final class ModItems {
-    // A furnace smelts one item per 200 ticks by default, so this burns exactly one item per pellet.
-    private static final int WOOD_PELLET_BURN_TIME = 200;
-
-    // What vanilla gives every wooden tool (verified against FuelValues).
-    private static final int WOODEN_TOOL_BURN_TIME = 200;
-
-    // Matches vanilla sticks and saplings, which both burn for half a wooden tool.
-    private static final int COARSE_FIBER_BURN_TIME = 100;
+    // Burn times are datapack references rather than raw numbers, because vanilla's
+    // cooking/time_* providers aren't plain constants: each one divides its value by 2
+    // in a smoker or blast furnace. Passing a constant would silently drop that halving
+    // and double the mod's fuel efficiency in those two blocks.
+    //
+    // A furnace smelts one item per 200 ticks by default, so wood_items_large (200) burns
+    // exactly one item per pellet. It is also what vanilla gives every wooden tool, which
+    // is the rate the cane is balanced around. dry_plants (100) is what vanilla sticks and
+    // saplings burn for, i.e. half a wooden tool.
+    private static final ResourceKey<ContextIntProvider> WOOD_PELLET_BURN_TIME =
+            ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE;
+    private static final ResourceKey<ContextIntProvider> WOODEN_TOOL_BURN_TIME =
+            ContextIntProviders.COOKING_TIME_WOOD_ITEMS_LARGE;
+    private static final ResourceKey<ContextIntProvider> COARSE_FIBER_BURN_TIME =
+            ContextIntProviders.COOKING_TIME_DRY_PLANTS;
 
     // The cane fights like a wooden hoe: vanilla builds that one as
-    // HoeItem(ToolMaterial.WOOD, 0.0F, -3.0F), i.e. the displayed 1 damage / 1.0 speed.
+    // Item.Properties.hoe(ToolMaterial.WOOD, 0.0F, -3.0F), i.e. the displayed
+    // 1 damage / 1.0 speed. (26.3 removed HoeItem; the stats moved to Properties.)
     private static final float WOODEN_CANE_ATTACK_DAMAGE = 1.0F;
     private static final float WOODEN_CANE_ATTACK_SPEED = 1.0F;
 
@@ -69,15 +79,18 @@ public final class ModItems {
                 () -> new Item(new Item.Properties()
                         .setId(itemKey("wooden_cane"))
                         .stacksTo(1)
+                        .cookingFuel(WOODEN_TOOL_BURN_TIME)
                         .attributes(buildWoodenCaneAttributes())));
 
         WOOD_PELLET = platform.registerItem("wood_pellet",
                 () -> new Item(new Item.Properties()
-                        .setId(itemKey("wood_pellet"))));
+                        .setId(itemKey("wood_pellet"))
+                        .cookingFuel(WOOD_PELLET_BURN_TIME)));
 
         COARSE_FIBER = platform.registerItem("coarse_fiber",
                 () -> new Item(new Item.Properties()
-                        .setId(itemKey("coarse_fiber"))));
+                        .setId(itemKey("coarse_fiber"))
+                        .cookingFuel(COARSE_FIBER_BURN_TIME)));
 
         POLE_SAW = platform.registerItem("pole_saw",
                 () -> new Item(new Item.Properties()
@@ -99,10 +112,6 @@ public final class ModItems {
         platform.addToCreativeTab(INGREDIENTS_TAB, COARSE_FIBER);
 
         platform.registerDispenserProjectile(CRUDE_ARROW);
-
-        platform.registerFuel(WOOD_PELLET, WOOD_PELLET_BURN_TIME);
-        platform.registerFuel(WOODEN_CANE, WOODEN_TOOL_BURN_TIME);
-        platform.registerFuel(COARSE_FIBER, COARSE_FIBER_BURN_TIME);
     }
 
     private static ItemAttributeModifiers buildWoodenCaneAttributes() {

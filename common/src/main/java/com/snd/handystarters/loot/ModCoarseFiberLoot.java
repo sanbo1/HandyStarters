@@ -3,7 +3,6 @@ package com.snd.handystarters.loot;
 import net.minecraft.advancements.predicates.ItemPredicate;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
@@ -18,7 +17,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import com.snd.handystarters.registry.ModItems;
 
@@ -48,12 +47,12 @@ public final class ModCoarseFiberLoot {
         return false;
     }
 
-    public static LootPool buildCoarseFiberPool(HolderLookup.Provider registries) {
+    public static LootPool buildCoarseFiberPool(HolderGetter.Provider registries) {
         HolderGetter<Item> items = registries.lookupOrThrow(Registries.ITEM);
-        Holder<Enchantment> fortune = registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE);
+        Holder<Enchantment> fortune = registries.getOrThrow(Enchantments.FORTUNE);
 
         return LootPool.lootPool()
-                .setRolls(ConstantValue.exactly(1.0F))
+                .setRolls(ContextIntProviders.exactly(1))
                 .add(LootItem.lootTableItem(ModItems.COARSE_FIBER.get())
                         .when(LootItemRandomChanceCondition.randomChance(DROP_CHANCE))
                         .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(items, Items.SHEARS)).invert())

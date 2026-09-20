@@ -11,24 +11,28 @@ authors = "sanbo1"
 description = '''
 Eliminate the frustration of the early game!
 '''
-logoFile = "assets/handy_starters/icon.png"
+# 26.3 split the old logoFile into a wide bannerFile and a square iconFile;
+# ours is a 128x128 square, so it goes in iconFile.
+iconFile = "assets/handy_starters/icon.png"
 
 [[dependencies.handy_starters]]
 modId = "neoforge"
 type = "required"
-# Any NeoForge for the 26.2 line only. Admits 26.2.0.1-beta and up (verified to
-# load and run against 26.2.0.1-beta), excludes only the very first build
-# (26.2.0.0-beta) and anything built for a later MC line (e.g. 26.3.x), which
-# this mod has never been built or tested against. The mod uses only NeoForge
-# APIs that predate 26.2.
-versionRange = "[26.2,26.3)"
+# Any NeoForge for the 26.3 line only, down to and including the very first
+# build (26.3.0.0-beta), which is what this mod is developed against. The lower
+# bound spells out the "-beta" qualifier on purpose: under Maven version
+# comparison a pre-release qualifier sorts below the plain release of the same
+# number, so a bare "[26.3,..." would reject 26.3.0.0-beta itself. The upper
+# bound excludes anything built for a later MC line (e.g. 26.4.x), which this
+# mod has never been built or tested against.
+versionRange = "[26.3.0.0-beta,26.4)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.handy_starters]]
 modId = "minecraft"
 type = "required"
-# This build targets the 26.2 line only (matches the Fabric side's "~26.2").
-versionRange = "[26.2,26.3)"
+# This build targets the 26.3 line only (matches the Fabric side's "~26.3").
+versionRange = "[26.3,26.4)"
 ordering = "NONE"
 side = "BOTH"

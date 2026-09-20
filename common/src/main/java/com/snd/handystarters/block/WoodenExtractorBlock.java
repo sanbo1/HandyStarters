@@ -1,7 +1,5 @@
 package com.snd.handystarters.block;
 
-import com.mojang.serialization.MapCodec;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -35,7 +33,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
  * there's no FACING state.
  */
 public final class WoodenExtractorBlock extends BaseEntityBlock {
-    public static final MapCodec<WoodenExtractorBlock> CODEC = simpleCodec(WoodenExtractorBlock::new);
     public static final BooleanProperty ENABLED = HopperBlock.ENABLED;
 
     // Matches the block model: one solid box with the thin intake nub on top.
@@ -46,11 +43,6 @@ public final class WoodenExtractorBlock extends BaseEntityBlock {
     public WoodenExtractorBlock(BlockBehaviour.Properties properties) {
         super(properties);
         registerDefaultState(stateDefinition.any().setValue(ENABLED, Boolean.TRUE));
-    }
-
-    @Override
-    public MapCodec<WoodenExtractorBlock> codec() {
-        return CODEC;
     }
 
     @Override

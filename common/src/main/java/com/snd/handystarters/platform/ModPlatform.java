@@ -26,8 +26,6 @@ public interface ModPlatform {
 
     void addToCreativeTab(ResourceKey<CreativeModeTab> tab, Supplier<? extends Item> item);
 
-    void registerFuel(Supplier<? extends Item> item, int burnTicks);
-
     /**
      * Makes a dispenser shoot the item instead of dropping it. Implementing
      * {@code ProjectileItem} is not enough on its own: a dispenser looks the

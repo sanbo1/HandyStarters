@@ -20,9 +20,9 @@ subprojects {
     apply plugin: 'maven-publish'
 
     base {
-        // Set up a suffixed format for the mod jar names, e.g. `example-fabric-mc26.2`.
+        // Set up a suffixed format for the mod jar names, e.g. `example-fabric-mc26.3`.
         // The Minecraft version is included so jars built for different MC versions
-        // (e.g. a future 1.21.1 port) can be told apart at a glance.
+        // (e.g. the 26.2 and 1.21.11 ports) can be told apart at a glance.
         archivesName = "$rootProject.archives_name-$project.name-mc$rootProject.minecraft_version"
     }
 
