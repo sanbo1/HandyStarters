@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": {
+      "item": "minecraft:cobblestone"
+    },
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "Y": {
+      "item": "handy_starters:coarse_fiber"
+    }
+  },
+  "pattern": [
+    "X",
+    "#",
+    "Y"
+  ],
+  "result": {
+    "id": "handy_starters:crude_arrow",
+    "count": 2
+  }
+}

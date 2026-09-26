@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "handy_starters:wood_pellet_pair"
+    },
+    {
+      "tag": "handy_starters:wood_pellet_pair"
+    }
+  ],
+  "result": {
+    "id": "handy_starters:wood_pellet",
+    "count": 1
+  }
+}

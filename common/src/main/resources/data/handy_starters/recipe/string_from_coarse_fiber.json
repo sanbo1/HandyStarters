@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "handy_starters:coarse_fiber"
+    }
+  },
+  "pattern": [
+    "FF",
+    "FF",
+    "FF"
+  ],
+  "result": {
+    "id": "minecraft:string",
+    "count": 1
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "facing=down": { "model": "handy_starters:block/wooden_container_down" },
+    "facing=east": { "model": "handy_starters:block/wooden_container_side", "y": 90 },
+    "facing=north": { "model": "handy_starters:block/wooden_container_side" },
+    "facing=south": { "model": "handy_starters:block/wooden_container_side", "y": 180 },
+    "facing=west": { "model": "handy_starters:block/wooden_container_side", "y": 270 }
+  }
+}

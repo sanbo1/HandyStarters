@@ -1,0 +1,43 @@
+{
+    "parent": "minecraft:block/block",
+    "ambientocclusion": false,
+    "textures": {
+        "particle": "handy_starters:block/wooden_container_outside",
+        "top": "handy_starters:block/wooden_container_top",
+        "side": "handy_starters:block/wooden_container_outside",
+        "inside": "handy_starters:block/wooden_container_inside"
+    },
+    "elements": [
+        {   "from": [ 0, 10, 0 ],
+            "to": [ 16, 16, 16 ],
+            "faces": {
+                "down":  { "texture": "#top" },
+                "up":    { "texture": "#top", "cullface": "up" },
+                "north": { "texture": "#side", "cullface": "north" },
+                "south": { "texture": "#side", "cullface": "south" },
+                "west":  { "texture": "#side", "cullface": "west" },
+                "east":  { "texture": "#side", "cullface": "east" }
+            }
+        },
+        {   "from": [ 4, 4, 4 ],
+            "to": [ 12, 10, 12 ],
+            "faces": {
+                "down":  { "texture": "#inside" },
+                "north": { "texture": "#side" },
+                "south": { "texture": "#side" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
+        },
+        {   "from": [ 6, 4, 0 ],
+            "to": [ 10, 8, 4 ],
+            "faces": {
+                "down":  { "texture": "#inside" },
+                "up":    { "texture": "#side" },
+                "north": { "texture": "#side", "cullface": "north" },
+                "west":  { "texture": "#side" },
+                "east":  { "texture": "#side" }
+            }
+        }
+    ]
+}
