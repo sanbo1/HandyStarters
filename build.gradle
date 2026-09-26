@@ -1,5 +1,5 @@
 plugins {
-    id 'dev.architectury.loom' version '1.17-SNAPSHOT' apply false
+    id 'dev.architectury.loom' version '1.17.493' apply false
     id 'architectury-plugin' version '3.5-SNAPSHOT'
     id 'com.gradleup.shadow' version '9.4.3' apply false
 }
@@ -19,8 +19,10 @@ subprojects {
     apply plugin: 'maven-publish'
 
     base {
-        // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
-        archivesName = "$rootProject.archives_name-$project.name"
+        // Set up a suffixed format for the mod jar names, e.g. `example-fabric-mc1.21.1`.
+        // The Minecraft version is included so jars built for different MC versions
+        // (e.g. the 1.21.11 or 26.2 builds) can be told apart at a glance.
+        archivesName = "$rootProject.archives_name-$project.name-mc$rootProject.minecraft_version"
     }
 
     repositories {

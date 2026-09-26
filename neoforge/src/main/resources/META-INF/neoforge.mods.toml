@@ -1,21 +1,22 @@
 modLoader = "javafml"
 loaderVersion = "[4,)"
-#issueTrackerURL = ""
-license = "Insert License Here"
+issueTrackerURL = "https://github.com/sanbo1/HandyStarters/issues"
+license = "MIT"
 
 [[mods]]
 modId = "handy_starters"
 version = "${version}"
 displayName = "Handy Starters"
-authors = "Me!"
+authors = "sanbo1"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+Eliminate the frustration of the early game!
 '''
-#logoFile = ""
+logoFile = "assets/handy_starters/icon.png"
 
 [[dependencies.handy_starters]]
 modId = "neoforge"
 type = "required"
+# The 21.1 line (MC 1.21.1) has no -beta builds; this admits 21.1.1, the first release.
 versionRange = "[21.1,)"
 ordering = "NONE"
 side = "BOTH"
@@ -23,7 +24,8 @@ side = "BOTH"
 [[dependencies.handy_starters]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.1,)"
+# This build targets 1.21.1 only; 1.21.2 brought large API changes.
+versionRange = "[1.21.1,1.21.2)"
 ordering = "NONE"
 side = "BOTH"
 

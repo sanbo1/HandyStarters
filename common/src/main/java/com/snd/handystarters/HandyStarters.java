@@ -1,6 +1,6 @@
 package com.snd.handystarters;
 
-public final class ExampleMod {
+public final class HandyStarters {
     public static final String MOD_ID = "handy_starters";
 
     public static void init() {
