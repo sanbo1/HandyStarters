@@ -50,3 +50,15 @@ MOD ID は `handy_starters`、パッケージは `com.snd.handystarters` で 26.
   NeoForge側では登録イベント発火時まで解決を遅らせること**（`DeferredRegister`は遅延登録前提のため、呼び出し時点で
   `Supplier<Block>#get()` すると "Trying to access unbound value" のNPEになる）。
 - 26.2 版で踏んだ罠は `../26.2/CLAUDE.md` にある。1.21.11 でも同じかはバイトコードで確認してから適用する。
+
+## 開発環境で出る既知のログ（無視してよいもの）
+
+- NeoForge の `runServer` を `stop` で正常終了させると、停止直前に次の ERROR が出る。
+  `Class processor unprotect:processor transformed 85.75% of loaded class which is suspiciously high; it may be attempting mass-ASM.`
+  原因は Architectury Loom が開発時の実行環境にだけ組み込む `io.github.juuxel:unprotect`。
+  Minecraft のほぼ全クラスのアクセス制限を外すため、書き換えた割合が高くなる。
+  NeoForge は終了時に、書き換えた割合が 25% を超える処理をこの ERROR で報告する
+  （`NeoForgeEventHandler` が `GameShuttingDownEvent` で行う）。
+  配布用 JAR には含まれず、MOD 側の不具合ではない。数値は読み込んだクラス数で多少変わる。
+  終了時にしか出ないため、停止処理の前にプロセスを止めた場合は出ない。
+  （確認時の構成：NeoForge 21.11.0-beta、FML 10.0.34、Architectury Loom 1.17.493、unprotect 2.0.2）
