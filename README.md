@@ -46,7 +46,8 @@ A cheap, rough alternative to the standard arrow: cobblestone, a stick and
 coarse fiber craft into two. Deals less damage and flies less accurately than
 a normal arrow, and can't be picked back up — a disposable option for early
 combat that doesn't eat into your good arrow stock. Works from bows and
-dispensers alike.
+dispensers alike. You can also craft a single regular arrow from flint, a
+stick and coarse fiber.
 
 ### 📦 Wooden Feeder / Wooden Extractor
 A cheaper, earlier-game alternative to the iron hopper. The Feeder only
@@ -110,6 +111,7 @@ Handy Starters は、マインクラフトの序盤で感じる「地味に面�
 通常の矢より安価で粗雑な代替品です。丸石・棒・粗い繊維から2本作れます。通常の矢より
 ダメージが低く命中精度も低い上、回収もできませんが、大事な矢を減らさずに済み、
 冒険序盤の使い捨て武器として便利です。弓からもディスペンサーからも発射できます。
+火打石・棒・粗い繊維で通常の矢を1本作成することも可能です。
 
 ### 📦 木製供給器・木製取出器
 鉄のホッパーより安価で序盤から作れる代替品です。供給器は隣接ブロックへアイテムを**押し出す**だけ、
